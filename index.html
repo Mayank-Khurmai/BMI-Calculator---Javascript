@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BMI Calculator</title>
+<style>
+    *{
+        box-sizing: border-box;
+    }
+
+    body{
+        padding: 0px;
+        margin: 0px;
+        background-color: aliceblue;
+    }
+
+    #outer-div{
+        width: 34%;
+        height: 640px;
+        margin: 0 auto;
+        margin-top: 50px;
+        border: 2px solid lightslategrey;
+        box-shadow: 5px 5px rgb(145, 141, 141);
+    }
+
+    #header-div{
+        width: 90%;
+        height: 80px;
+        margin: 0 auto;
+    }
+
+    h1{
+        text-align: center;
+        font-weight: bold;
+        font-family: cursive;
+    }
+
+    #content-div{
+        width: 90%;
+        margin: 0 auto;
+        padding-top: 30px;
+        border-radius: 10px;
+    }
+
+    #input-table{
+        width: 80%;
+        height: auto;
+        margin: 0 auto;
+        margin-bottom: 30px;
+    }
+
+    #input-table tr{
+        height: 50px;
+    }
+
+    #input-table input, #input-table select{
+        width: 190px;
+    }
+
+    #input-table input[type=button]{
+        width: 200px;
+        height: 40px;
+        cursor: pointer;
+    }
+
+    #result-table{
+        width: 90%;
+        height: 150px;
+        margin: 0 auto;
+    }
+
+    #result-div{
+        width: 80%;
+        height: auto;
+        margin: 0 auto;
+        margin-bottom: 30px;
+    }
+
+    .a{
+        width: 40%;
+    }
+
+    .b{
+        width: 20%;
+    }
+
+    .c{
+        width: 40%;
+    }
+
+    h4{
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+    <div id="outer-div">
+        <div id="header-div">
+            <h1>BMI CALCULATOR</h1>
+        </div>
+
+                <fieldset id="content-div">
+                    <legend>Calculate Now</legend>
+                        <table id="input-table">
+                            <tr>
+                                <td>Measurement Unit</td>
+                                <td>
+                                    <select name="unit">
+                                        <option name="unit">Kg / Meter</option>
+                                        <option name="unit">Lbs / Inch</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Your Weight</td>
+                                <td><input type="number" name="weight" placeholder="Kg / Lbs" id="ww" oninput="wfun();"></td>
+                            </tr>
+                            <tr>
+                                <td>Your Height</td>
+                                <td><input type="number" name="height" placeholder="Metre / Inch" id="hh" oninput="hfun();"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><input type="button" value="Calculate Now" onclick="cfun();"></td>
+                            </tr>
+                        </table>
+              </fieldset>
+
+        <div id="result-div">
+            <table id="result-table">
+                <tr>
+                        <td class="a">Your Weight is</td>
+                        <td class="b">:-</td>
+                        <td class="c" id="w-value"></td>
+                </tr>
+                <tr>
+                    <td class="a">Your Height is</td>
+                    <td class="b">:-</td>
+                    <td class="c" id="h-value"></td>
+                </tr>
+                <tr>
+                    <td clas="a">Your<b><font color="red"> BMI </font></b>is</td>
+                    <td clas="b">:-</td>
+                    <td clas="c" id="b-value"><b></b></td>
+                </tr>
+            </table>
+            <h4>You are Under Weight</h4>
+        
+        </div>
+    </div>
+<script>
+
+var h = document.getElementById("h-value");
+var w = document.getElementById("w-value");
+var b = document.getElementById("b-value");
+
+function wfun()
+{
+    w.innerHTML = document.getElementById("ww").value; 
+}
+
+function hfun()
+{
+    h.innerHTML = document.getElementById("hh").value; 
+}
+
+function cfun()
+{
+    alert("hi");
+}
+
+</script>
+</body>
+</html>
