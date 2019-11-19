@@ -54,11 +54,21 @@
 
     #input-table input, #input-table select{
         width: 190px;
+        height: 25px;
     }
 
     #input-table input[type=button]{
         width: 200px;
         height: 40px;
+        border-radius: 1px;
+        cursor: pointer;
+    }
+
+    #input-table input[type=button]:hover{
+        width: 200px;
+        height: 40px;
+        font-weight: bold;
+        border-radius: 1px;
         cursor: pointer;
     }
 
@@ -67,6 +77,7 @@
         height: 150px;
         margin: 0 auto;
     }
+
 
     #result-div{
         width: 80%;
@@ -87,8 +98,15 @@
         width: 40%;
     }
 
+    .cc{
+        font-weight: bold;
+        font-size: large;
+        color: red;
+    }
+
     h4{
         text-align: center;
+        display: none;
     }
 </style>
 </head>
@@ -105,19 +123,18 @@
                             <tr>
                                 <td>Measurement Unit</td>
                                 <td>
-                                    <select name="unit">
-                                        <option name="unit">Kg / Meter</option>
-                                        <option name="unit">Lbs / Inch</option>
+                                    <select name="unit" id="selectop">
+                                        <option value="typea">Kg / Meter</option>
                                     </select>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Your Weight</td>
-                                <td><input type="number" name="weight" placeholder="Kg / Lbs" id="ww" oninput="wfun();"></td>
+                                <td><input type="number" name="weight" placeholder="Kilogram" id="ww" oninput="wfun();"></td>
                             </tr>
                             <tr>
                                 <td>Your Height</td>
-                                <td><input type="number" name="height" placeholder="Metre / Inch" id="hh" oninput="hfun();"></td>
+                                <td><input type="number" name="height" placeholder="Meter" id="hh" oninput="hfun();"></td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -139,20 +156,29 @@
                     <td class="c" id="h-value"></td>
                 </tr>
                 <tr>
-                    <td clas="a">Your<b><font color="red"> BMI </font></b>is</td>
-                    <td clas="b">:-</td>
-                    <td clas="c" id="b-value"><b></b></td>
+                    <td class="a">Your<b><font color="red"> BMI </font></b>is</td>
+                    <td class="b">:-</td>
+                    <td class="c cc" id="b-value"></td>
                 </tr>
             </table>
-            <h4>You are Under Weight</h4>
-        
+                <h4 id="sw" class="empty">You are Severly Under Weighted</h4>
+                <h4 id="uw" class="empty">You are Under Weighted</h4>
+                <h4 id="nw" class="empty">You are Normal Weighted</h4>
+                <h4 id="ow" class="empty">You are Over Weighted</h4>
+                <h4 id="ob" class="empty">You are Obesity</h4>
         </div>
     </div>
 <script>
 
 var h = document.getElementById("h-value");
 var w = document.getElementById("w-value");
-var b = document.getElementById("b-value");
+var r = document.getElementById("b-value");
+var sw = document.getElementById("sw");
+var uw = document.getElementById("uw");
+var nw = document.getElementById("nw");
+var ow = document.getElementById("ow");
+var ob = document.getElementById("ob");
+
 
 function wfun()
 {
@@ -166,7 +192,35 @@ function hfun()
 
 function cfun()
 {
-    alert("hi");
+    var a = Number(document.getElementById("ww").value); 
+    var b = Number(document.getElementById("hh").value); 
+    var rkg = a/(b*b);
+    r.innerHTML = rkg;
+     
+    if(rkg<16)
+    {
+        sw.style.display = "block";
+    }
+    
+    else if(rkg<19)
+    {
+        uw.style.display = "block";
+    }
+    
+    else if(rkg<25)
+    {
+        nw.style.display = "block";
+    }
+    
+    else if(rkg<30)
+    {
+        ow.style.display = "block";
+    }
+    
+    else
+    {
+        ob.style.display = "block";
+    }
 }
 
 </script>
