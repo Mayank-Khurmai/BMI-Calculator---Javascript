@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>BMI Calculator</title>
 <style>
     *{
@@ -11,6 +12,10 @@
         padding: 0px;
         margin: 0px;
         background-color: aliceblue;
+    }
+
+    a{
+        text-decoration: none;
     }
 
     #outer-div{
@@ -58,14 +63,14 @@
     }
 
     #input-table input[type=button]{
-        width: 200px;
+        width: 180px;
         height: 40px;
         border-radius: 1px;
         cursor: pointer;
     }
 
     #input-table input[type=button]:hover{
-        width: 200px;
+        width: 180px;
         height: 40px;
         font-weight: bold;
         border-radius: 1px;
@@ -108,6 +113,13 @@
         text-align: center;
         display: none;
     }
+    #see{
+        text-align: center;
+        display: none;
+        font-weight: bold;
+        font-size: 12px;
+        cursor: pointer;
+    }
 </style>
 </head>
 <body>
@@ -138,7 +150,7 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td><input type="button" value="Calculate Now" onclick="cfun();"></td>
+                                <td><input type="button" value="Calculate Now" onclick="cfun();"><i class="fa fa-refresh" aria-hidden="true" style="cursor:pointer; font-size: 20px;" onclick="document.location.reload();"></i></td>
                             </tr>
                         </table>
               </fieldset>
@@ -166,6 +178,7 @@
                 <h4 id="nw" class="empty">You are Normal Weighted</h4>
                 <h4 id="ow" class="empty">You are Over Weighted</h4>
                 <h4 id="ob" class="empty">You are Obesity</h4>
+                <a href="https://www.youtube.com/watch?v=fnmLtQs9ybI"><span id="see">See Diet Plan &gt;&gt;</span></a>
         </div>
     </div>
 <script>
@@ -178,6 +191,7 @@ var uw = document.getElementById("uw");
 var nw = document.getElementById("nw");
 var ow = document.getElementById("ow");
 var ob = document.getElementById("ob");
+var see = document.getElementById("see");
 
 
 function wfun()
@@ -197,31 +211,43 @@ function cfun()
     var rkg = a/(b*b);
     r.innerHTML = rkg;
      
+
+  //  document.getElementById("ww").setAttribute("disable");
+  //  document.getElementById("hh").setAttribute("style", "background-color:red");
+
     if(rkg<16)
     {
         sw.style.display = "block";
+        see.style.display = "block";
     }
     
     else if(rkg<19)
     {
         uw.style.display = "block";
+        see.style.display = "block";
     }
     
     else if(rkg<25)
     {
         nw.style.display = "block";
+        see.style.display = "block";
     }
     
     else if(rkg<30)
     {
         ow.style.display = "block";
+        see.style.display = "block";
     }
     
     else
     {
         ob.style.display = "block";
+        see.style.display = "block";
     }
 }
+
+
+
 
 </script>
 </body>
